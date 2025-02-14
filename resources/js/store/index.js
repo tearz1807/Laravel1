@@ -16,5 +16,10 @@ export default createStore({
             console.log('mutation store set_test', payload);
             return state.test = payload;
         },
+        SET_ASOC(state, payload){
+            for (let key in payload){
+                state[key]=payload[key];
+            }
+        }
     }
 });

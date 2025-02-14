@@ -12,8 +12,10 @@
         <div id="app">
             123<i class="bi bi-alt"></i>11
 
-            (@{{$store.state.test}})
-
+            <div>
+                test: (@{{$store.state.test}})<br>
+                version: (@{{$store.state.version}})<br>
+            </div>
             <app></app>
 
             <div id="carouselExampleCaptions" class="carousel slide">
