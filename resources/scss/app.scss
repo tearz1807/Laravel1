@@ -1,9 +1,90 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons.css';
+html, body {
+    height: 100%;
+    margin: 0;
+}
 
-div{
-    font-size: 24px;
-    p{
-        font-weight: 900;
-    }
+body {
+    background-image: url("bg.jpg");
+    background-size: cover;
+}
+
+.heading {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    height: 60vh;
+    width: 50vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px; 
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    background-color: transparent;
+    color: white;
+    transition: color 0.3s;
+}
+
+input[type="submit"] {
+    position: fixed;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    background-color: transparent;
+    color: white;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.reg-menu {
+    width: 100%;
+    height: auto;
+    position: absolute; 
+}
+
+.menu-top {
+    position: fixed;
+    top: 60px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    display: flex; 
+    gap: 10px;
+}
+
+a {
+    display: flex;
+    height: 20px;
+    padding: 15px 30px;
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    
+}
+
+a:hover {
+    background-color: transparent;
+    color: lightblue;
+}
+
+input:focus {
+    outline: none;
+    color: lightblue;
 }
