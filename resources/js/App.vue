@@ -1,13 +1,18 @@
 <template>
     <nav class="navbar">
         <div class="container-fluid">
-            <i class="bi bi-bank2"></i>
-            <a href="#">Главная</a>
-            <a href="#">Напоминания</a>
-            <a href="#">Карта знаний</a>
-            <a href="#">Как пользоваться</a>
-            <a href="#">Вход</a>
-            <a href="#">Регистрация</a>
+            <i class="bi bi-bank2 logo"></i>
+            
+            <div class="center-buttons">
+            <a href="#"><strong>Главная</strong></a>
+            <a href="#"><strong>Напоминания</strong></a>
+            <a href="#"><strong>Карта знаний</strong></a>
+            <a href="#"><strong>Как пользоваться</strong></a>
+            </div>
+            <div class="left-buttons">
+                <a href="#" class="auth-button"><strong>Вход</strong></a>
+                <a href="#" class="auth-button"><strong>Регистриция</strong></a>
+            </div>
         </div>
     </nav>
     <div class="first-page">
@@ -60,42 +65,55 @@
             <div class="missison">
                 <h2><strong>Our Mission</strong></h2>
                 <p>
-                    At <strong>PureClean</strong>, we believe that a clean space promotes health and wellness. Our expert <br> 
-                    team provides top-notch services for both homes and businesses with an unwavering <br> 
-                    commitment to excellence.
+                At <strong>PureClean</strong>, we believe that a clean space promotes health and wellness. Our expert <br> 
+                team provides top-notch services for both homes and businesses with an unwavering <br> 
+                commitment to excellence.
                 </p>
                 <div class="cards-container">
-                    <div class="card">
+                    <div class="card expert-team">
                         <i class="bi bi-person-check-fill"></i>
                         <div class="card-body">
                             <p><strong>Expert Team</strong></p>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card eco-friendly">
                         <i class="bi bi-recycle"></i>
                         <div class="card-body">
                             <p><strong>Eco-Friendly</strong></p>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card reliable">
                         <i class="bi bi-clock-fill"></i>
                         <div class="card-body">
                             <p><strong>Reliable</strong></p>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card customer-centered">
                         <i class="bi bi-emoji-smile-fill"></i>
                         <div class="card-body">
                             <p><strong>Customer-Centered</strong></p>
                         </div>
                     </div>
                 </div>
+                <div class="image-container">
+                </div>
             </div>
+            <img :src="aboutImg" alt="About Image"/>
         </div>
     </div>
+
 </template>
 
 <script>
+import aboutImg from "/resources/js/src/about-img.png"; 
+
+export default {
+  data() {
+    return {
+      aboutImg,
+    };
+  },
+};
 
 </script>
 
