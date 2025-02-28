@@ -4,6 +4,9 @@ import 'bootstrap';
 import store from './store';
 import { createApp } from 'vue';
 import App from './App.vue';
+import '../scss/navbar.scss';
+import '../scss/first-page.scss';
+import '../scss/second-page.scss';
 
 const app = createApp(App); 
 

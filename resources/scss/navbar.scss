@@ -1,0 +1,88 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+$white: #ffffff;
+$primary-color: #007bff;
+$secondary-color: #555;
+$light-background: #f6f9fc;
+$padding: 10px;
+$min-height: 100vh;
+
+$auth-button-bg: white;
+
+.navbar {
+    background: linear-gradient(45deg, #007bff, #6610f2);
+    padding: 0.5rem;
+    min-height: 60px; 
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000;
+
+    .container-fluid {
+        display: flex;
+        align-items: center; 
+        width: 100%;
+    }
+
+    .left-buttons {
+        display: flex;
+        margin-right: auto; 
+    }
+
+    .center-buttons {
+        display: flex;
+        justify-content: center; 
+        flex-grow: 1; 
+    }
+
+    .logo {
+        margin-left: 250px;
+        font-size: 60px;
+        color: $white;
+        flex-shrink: 0; 
+    }
+
+    a {
+        color: $white; 
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 20px; 
+        transition: color 0.3s, background-color 0.3s;
+    
+        &:hover {
+            color: $secondary-color !important; 
+            background-color: transparent !important; 
+        }
+    }
+    
+    
+
+    .auth-button {
+        background: $auth-button-bg; 
+        border-radius: 20px; 
+        padding: 10px 20px; 
+        margin-left: 10px; 
+        color: $primary-color; 
+        border: 2px solid transparent;
+
+        transition: background-color 0.3s, color 0.3s, border 0.3s;
+
+        &:hover {
+            color: $white !important; 
+            border: 2px solid $white !important;
+        }
+    }
+
+    .center-buttons a {
+        transition: transform 0.3s, background-color 0.3s, color 0.3s;
+
+        &:hover {
+            transform: translateY(-3px);
+            color: $secondary-color; 
+        }
+    }
+}

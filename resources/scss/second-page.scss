@@ -1,0 +1,111 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+$white: #ffffff;
+$primary-color: #007bff;
+$secondary-color: #555;
+$light-background: #f6f9fc;
+$padding: 10px;
+$min-height: 100vh;
+$auth-button-bg: white;
+
+.second-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; 
+    padding: $padding; 
+    min-height: 80vh;
+
+    .head {
+        text-align: center; 
+        margin-bottom: 10px;
+        color: $white;
+        margin-top: 50px;
+    }
+
+    .container {
+        display: flex; 
+        width: 100%; 
+        max-width: 1200px; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: flex-start; 
+        padding-top: 30px;
+    }
+
+    .missison {
+        margin-top: 20px;
+        color: $white;
+        margin-right: 20px;
+        flex: 1; 
+
+        .cards-container {
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-between; 
+            margin-top: 20px; 
+            width: calc(100% - 20px);
+
+            .card {
+                background: rgba(255, 255, 255, 0); 
+                padding: 10px; 
+                margin: 10px; 
+                width: calc(50% - 30px); 
+                text-align: center; 
+                border: none; 
+                position: relative; 
+
+                &:hover i {
+                    color: $primary-color; 
+                }
+
+                i {
+                    font-size: 35px; 
+                    margin-bottom: 10px; 
+                    color: $white;
+                }
+
+                .card-body {
+                    p {
+                        font-size: 1em; 
+                        color: $white; 
+                        margin: 0; 
+                    }
+                }
+        
+                &.expert-team::before,
+                &.expert-team::after,
+                &.reliable::before,
+                &.reliable::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    width: 5px; 
+                    background: rgba(255, 255, 255, 0.5);
+                }
+        
+                &.expert-team::before,
+                &.reliable::before {
+                    left: -10px; 
+                }
+        
+                &.expert-team::after,
+                &.reliable::after {
+                    right: -10px; 
+                }
+            }
+        }
+    }
+    .image-container {
+        flex: 0 0 40%;
+
+        img {
+            width: 100%; 
+            height: auto;
+            margin-top: 70px;
+        }
+    }
+
+}
