@@ -8,9 +8,24 @@
         @vite(['resources/scss/app.scss'])
 
     </head>
-    <body class="font-sans antialiased dark:bg-black dark:text-white/50">
+    <body>
         <div id="app">
-            <app></app>
+            <div class="navbar">
+                @include('navbar') 
+            </div>
+
+            <div class="first-page">
+                @include('first-page')
+            </div>
+
+            <div class="second-page">
+                @include('second-page')
+            </div>
+
+            <div class="button">
+                @include('button')
+            </div>
+            
         </div>
     </body>
     @vite(['resources/js/app.js'])

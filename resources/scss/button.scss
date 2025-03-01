@@ -1,0 +1,48 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+$white: #ffffff;
+$primary-color: #007bff;
+$secondary-color: #555;
+$light-background: #f6f9fc;
+$padding: 10px;
+$min-height: 100vh;
+$auth-button-bg: white;
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: $white;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.5s ease; 
+    opacity: 0; 
+    visibility: hidden;
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:hover {
+        background-color: $primary-color;
+        color: $white;
+        border: 0px;
+    }
+
+    i {
+        font-size: 30px;
+        line-height: 40px;
+        text-align: center;
+        display: flex;
+        align-items: center; 
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+    }
+}

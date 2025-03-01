@@ -69,7 +69,6 @@
         </div>
     </div>
 
-
     <div class="first-page">
         <div class="container">
             <div class="head">
@@ -156,11 +155,16 @@
             </div>
         </div>
     </div>
-
+    <button 
+        v-if="showScrollToTopBtn" 
+        @click="scrollToTop" 
+        class="scroll-to-top" 
+        :class="{ show: showScrollToTopBtn }">
+        <i class="bi bi-chevron-double-up"></i>
+    </button>
 </template>
 
 <script>
-
 import aboutImg from "/resources/js/src/about-img.png"; 
 
 export default {
@@ -170,7 +174,8 @@ export default {
             loginEmail: '',
             loginPassword: '',
             registerEmail: '',
-            registerPassword: ''
+            registerPassword: '',
+            showScrollToTopBtn: false
         };
     },
 
@@ -181,7 +186,24 @@ export default {
         handleRegister() {
             console.log('Регистрация с электронной почтой:', this.registerEmail);
         },
+        scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        },
+        handleScroll() {
+            this.showScrollToTopBtn = window.scrollY > 0;
+        }
     },
-}
 
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+}
 </script>
+
