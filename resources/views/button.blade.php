@@ -11,10 +11,11 @@
     <body>
         <div id="app">
             <button 
-                class="scroll-to-top" 
                 v-if="showScrollToTopBtn" 
-                @click="scrollToTop">
-                <i class="bi bi-arrow-up"></i>
+                @click="scrollToTop" 
+                class="scroll-to-top" 
+                :class="{ show: showScrollToTopBtn }">
+                <i class="bi bi-chevron-double-up"></i>
             </button>
         </div>
     </body>

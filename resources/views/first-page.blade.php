@@ -10,14 +10,14 @@
     </head>
     <body>
         <div id="app">
-            <div class="first-page">
+            <<div class="first-page">
                 <div class="container">
                     <div class="head">
                         <h4><strong>Our Expertise</strong></h4>
                         <h2><strong>Effortless House Cleaning at Your Doorstep</strong></h2>
                         <p>We offer professional and customized cleaning solutions to keep your home spotless.<br> Our team ensures every corner sparkles!</p>
                     </div>
-
+        
                     <div class="cards">
                         <div class="card">
                             <i class="bi bi-stars"></i>

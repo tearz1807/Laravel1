@@ -11,12 +11,14 @@ $min-height: 100vh;
 $auth-button-bg: white;
 
 .navbar {
-    background: linear-gradient(to right, #004494, rgba(23, 162, 184, 0.8));
+    display: flex; 
+    background: linear-gradient(to right, #004494, rgba(23, 162, 184));
     padding: 0.5rem;
     height: 90px; 
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
     width: 100%;
     z-index: 1000;
 

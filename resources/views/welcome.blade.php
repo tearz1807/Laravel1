@@ -6,7 +6,6 @@
 
         <title>Laravel</title>
         @vite(['resources/scss/app.scss'])
-
     </head>
     <body>
         <div id="app">
@@ -25,8 +24,8 @@
             <div class="button">
                 @include('button')
             </div>
-            
         </div>
+
+        @vite(['resources/js/app.js'])
     </body>
-    @vite(['resources/js/app.js'])
 </html>

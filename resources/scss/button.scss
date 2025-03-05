@@ -21,12 +21,14 @@ $auth-button-bg: white;
     border-radius: 5px;
     
     cursor: pointer;
-    transition: background-color 0.3s, opacity 0.5s ease; 
+    transition: opacity 0.5s ease, visibility 0.5s ease; 
     opacity: 0; 
     visibility: hidden;
+
     &.show {
         opacity: 1;
         visibility: visible;
+        animation: ani 1s forwards;
     }
 
     &:hover {
@@ -34,6 +36,11 @@ $auth-button-bg: white;
         color: $white;
         border: 0px;
     }
+
+    @keyframes ani {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+      }
 
     i {
         font-size: 30px;
@@ -46,3 +53,4 @@ $auth-button-bg: white;
         width: 100%;
     }
 }
+

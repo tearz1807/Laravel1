@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <div class="first-page">
+    <<div class="first-page">
         <div class="container">
             <div class="head">
                 <h4><strong>Our Expertise</strong></h4>
@@ -155,6 +155,7 @@
             </div>
         </div>
     </div>
+
     <button 
         v-if="showScrollToTopBtn" 
         @click="scrollToTop" 
@@ -175,7 +176,9 @@ export default {
             loginPassword: '',
             registerEmail: '',
             registerPassword: '',
-            showScrollToTopBtn: false
+            showScrollToTopBtn: false,
+            isScrollingUp: false,
+            lastScrollY: 0
         };
     },
 
@@ -193,7 +196,10 @@ export default {
             });
         },
         handleScroll() {
-            this.showScrollToTopBtn = window.scrollY > 0;
+            const currentScrollY = window.scrollY;
+            this.showScrollToTopBtn = currentScrollY > 0;
+            this.isScrollingUp = currentScrollY < this.lastScrollY;
+            this.lastScrollY = currentScrollY;
         }
     },
 
@@ -206,4 +212,5 @@ export default {
     }
 }
 </script>
+
 
