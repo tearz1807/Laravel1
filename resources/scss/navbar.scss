@@ -1,20 +1,8 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-
-$white: #ffffff;
-$primary-color: #007bff;
-$secondary-color: #555;
-$light-background: #f6f9fc;
-$padding: 10px;
-$min-height: 100vh;
-
-$auth-button-bg: white;
-
 .navbar {
-    display: flex; 
+    display: flex;
     background: linear-gradient(to right, #004494, rgba(23, 162, 184));
     padding: 0.5rem;
-    height: 90px; 
+    height: 90px;
     position: fixed !important;
     top: 0 !important;
     right: 0 !important;
@@ -24,69 +12,102 @@ $auth-button-bg: white;
 
     .container-fluid {
         display: flex;
-        align-items: center; 
+        align-items: center;
         width: 100%;
-    }
 
-    .left-buttons {
-        display: flex;
-        margin-right: 100px; 
-    }
+        .left-buttons {
+            display: flex;
+            margin-right: 100px;
+        }
 
-    .center-buttons {
-        display: flex;
-        justify-content: flex-end; 
-        flex-grow: 1;
-        margin-right: 30px; 
-    }
+        .center-buttons {
+            display: flex;
+            justify-content: flex-end;
+            flex-grow: 1;
+            margin-right: 30px;
 
-    .logo {
-        margin-left: 250px;
-        font-size: 50px;
-        color: $white;
-        flex-shrink: 0; 
-    }
+            a {
+                margin-right: 20px;
+                font-size: 18px;
+            }
+        }
 
-    .center-buttons a {
-        margin-right: 20px; 
-        font-size: 18px; 
-    }
+        .logo {
+            margin-left: 250px;
+            font-size: 50px;
+            color: white;
+            flex-shrink: 0;
+        }
 
-    a {
-        color: $white; 
-        text-decoration: none;
-        margin: 0 15px;
-        font-size: 16px; 
-        transition: color 0.3s, background-color 0.3s;
-    
-        &:hover {
-            color: rgba(255, 255, 255, 0.7) !important; 
-            background-color: transparent !important; 
+        a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s, background-color 0.3s;
+
+            &:hover {
+                color: rgba(255, 255, 255, 0.7) !important;
+                background-color: transparent !important;
+            }
+        }
+
+        .auth-button {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 10px 15px;
+            margin-left: 10px;
+            color: #004494;
+            border: 2px solid transparent;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+
+            &:hover {
+                color: white !important;
+                border: 2px solid white !important;
+            }
+        }
+
+        .mobile-menu-icon {
+            display: none;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            margin-right: 20px;
         }
     }
+}
 
-    .auth-button {
-        background: $auth-button-bg; 
-        border-radius: 30px; 
-        padding: 10px 15px; 
-        margin-left: 10px; 
-        color: $primary-color; 
-        border: 2px solid transparent;
-
-        transition: background-color 0.3s, color 0.3s, border 0.3s;
-
-        &:hover {
-            color: $white !important; 
-            border: 2px solid $white !important;
-        }
-    }
-
-    .center-buttons a {
-        transition: transform 0.3s, background-color 0.3s, color 0.3s;
-
-        &:hover {
-            transform: translateY(-3px);
-            color: $secondary-color; 
-        }
-    }
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+  
+  .mobile-menu-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+  
+  .mobile-menu-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+  
+  .mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
 }

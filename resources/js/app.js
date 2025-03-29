@@ -3,17 +3,13 @@ import 'bootstrap';
 
 import store from './store';
 import { createApp } from 'vue';
-import App from './App.vue';
-import '../scss/navbar.scss';
-import '../scss/first-page.scss';
-import '../scss/second-page.scss';
-import '../scss/button.scss';
+import App from './app.vue';
 
 const app = createApp(App);
- 
+
 app.use(store); 
 
-app.mount("#app"); 
+//app.mount("#app");
 
 app.config.globalProperties.$mounted = function() { 
     console.log('app mount ', app.version, this);
