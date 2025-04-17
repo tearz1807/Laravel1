@@ -1,0 +1,29 @@
+.second-page{
+    background: linear-gradient(to right, #004494, rgba(23, 162, 184));
+    margin-top: 70px;
+    height: 75vh;
+}
+
+.image-container{
+    margin-top: 30px;
+}
+
+.white-line {
+    width: 4px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.card1 {
+    margin: 0 auto;
+    transition: transform 0.3s;
+
+    &:hover .bi {
+        color: $primary-color !important;
+    }
+}
+
+
+// .head {
+//     margin-top: 40px !important;
+// }

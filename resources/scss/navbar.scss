@@ -1,0 +1,49 @@
+.navbar{
+    height: 80px;
+    background: linear-gradient(to right, #004494, rgba(23, 162, 184));
+}
+
+.btn-custom {
+    background-color: $white;
+    color: #004494;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    border-radius: 30px;
+    padding: 10px 15px;
+
+    &:hover{
+        color: $white;
+        border: 2px solid $white;
+    }
+}
+
+.btn{
+    font-size: 18px;
+}
+
+.navbar-brand{
+    margin-left: 15%;
+    font-size: 50px;
+    color: $white;
+    
+    &:hover i {
+        color: white;
+    }
+}
+
+.nav-link {
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: translateY(-5px);
+        color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+.navbar-collapse{
+    margin-left: 25%;
+}
+
+.nav-link {
+    color: $white;
+    font-size: 18px;
+}

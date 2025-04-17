@@ -1,0 +1,42 @@
+.first-page {
+    margin-top: 60px;
+}
+.card {
+    text-align: center;
+    border: none;
+    transition: transform 0.3s;
+    height: 200px;
+
+    &:hover {
+        transform: translateY(-10px);
+    }
+
+    i {
+        font-size: 40px;
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+
+    h4 {
+        color: #183b56;
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 15px;
+        color: $secondary-color;
+    }
+}
+
+h2 {
+    color: #183b56;
+}
+
+p{
+    color: $secondary-color;
+}
+
+.card-body {
+    padding: 1.5rem;
+}

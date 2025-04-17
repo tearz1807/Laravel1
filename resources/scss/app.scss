@@ -1,9 +1,10 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
-div{
-    font-size: 24px;
-    p{
-        font-weight: 900;
-    }
-}
+$white: #ffffff;
+$secondary-color: #555;
+$primary-color: #007bff;
+
+@import 'navbar.scss';
+@import 'first-page.scss';
+@import 'second-page.scss';
