@@ -1,17 +1,17 @@
 <nav class="navbar navbar-expand-xxl w-100">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <i class="bi bi-bank2"></i>
+            <i class="bi bi-bank2 text-light"></i>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#navbarModal" aria-controls="navbarModal" aria-expanded="false" aria-label="Переключить навигацию">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav fw-bold">
-                <li class="nav-item me-3"><a class="nav-link" href="#">Главная</a></li>
-                <li class="nav-item me-3"><a class="nav-link" href="#">Напоминания</a></li>
-                <li class="nav-item me-3"><a class="nav-link" href="#">Карта знаний</a></li>
-                <li class="nav-item me-3"><a class="nav-link" href="#">Как пользоваться</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="#">Главная</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="#">Напоминания</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="#">Карта знаний</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="#">Как пользоваться</a></li>
             </ul>
             <div class="d-flex">
                 <button class="btn btn-custom me-2 fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>

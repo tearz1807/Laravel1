@@ -8,38 +8,38 @@
 
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <i class="bi bi-stars text-primary"></i>
-                    <div class="card-body">
+                <div class="card border-secondary text-center h-100">
+                    <i class="bi bi-stars text-primary mt-3"></i>
+                    <div class="card-body d-flex flex-column justify-content-between">
                         <h4 class="mb-2 fw-bold">Deep Cleaning</h4>
-                        <p>Thorough cleaning for all rooms, carpets,<br> windows, and upholstery to make your <br> home shine inside and out.</p>
+                        <p class="mb-0">Thorough cleaning for all rooms, carpets,<br> windows, and upholstery to make your <br> home shine inside and out.</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <i class="bi bi-speedometer2 text-primary"></i> 
-                    <div class="card-body">
+                <div class="card border-secondary text-center h-100">
+                    <i class="bi bi-speedometer2 text-primary mt-3"></i>
+                    <div class="card-body d-flex flex-column justify-content-between">
                         <h4 class="mb-2 fw-bold">Quick Clean-Ups</h4>
-                        <p>Perfect for daily maintenance with a focus <br> on high-traffic areas, keeping everything <br> fresh and organized.</p>
+                        <p class="mb-0">Perfect for daily maintenance with a focus <br> on high-traffic areas, keeping everything <br> fresh and organized.</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <i class="bi bi-water text-primary"></i>
-                    <div class="card-body">
+                <div class="card border-secondary text-center h-100">
+                    <i class="bi bi-water text-primary mt-3"></i>
+                    <div class="card-body d-flex flex-column justify-content-between">
                         <h4 class="mb-2 fw-bold">Eco-Friendly Cleaning</h4>
-                        <p>We use environmentally safe products to <br> ensure a cleaner home and a safer planet.</p>
+                        <p class="mb-0">We use environmentally safe products to <br> ensure a cleaner home and a safer planet.</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card">
-                    <i class="bi bi-house-door-fill text-primary"></i>
-                    <div class="card-body">
+                <div class="card border-secondary text-center h-100">
+                    <i class="bi bi-house-door-fill text-primary mt-3"></i>
+                    <div class="card-body d-flex flex-column justify-content-between">
                         <h4 class="mb-2 fw-bold">Move-In & Out Cleaning</h4>
-                        <p>Preparing your home for its next chapter <br> or tidying up after a move, we handle it all <br> with care.</p>
+                        <p class="mb-0">Preparing your home for its next chapter <br> or tidying up after a move, we handle it all <br> with care.</p>
                     </div>
                 </div>
             </div>

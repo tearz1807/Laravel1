@@ -14,5 +14,8 @@
     @include ('second-page')
   </div>
 
+  <div class="down-menu">
+    @include('down-menu')
+  </div>
 
 @endsection
