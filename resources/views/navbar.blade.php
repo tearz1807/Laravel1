@@ -8,8 +8,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav fw-bold">
-                <li class="nav-item me-3"><a class="nav-link text-white" href="#">Главная</a></li>
-                <li class="nav-item me-3"><a class="nav-link text-white" href="#">Напоминания</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="{{route('home')}}">Главная</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="{{route('test')}}">Напоминания</a></li>
                 <li class="nav-item me-3"><a class="nav-link text-white" href="#">Карта знаний</a></li>
                 <li class="nav-item me-3"><a class="nav-link text-white" href="#">Как пользоваться</a></li>
             </ul>
