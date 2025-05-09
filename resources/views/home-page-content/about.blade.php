@@ -1,4 +1,4 @@
-<div class="second-page">
+<div class="about p-5">
     <div class="head text-center mb-5 pt-5">
         <h2 class="fw-bold text-light fs-4 mb-3">GET TO KNOW US</h2>
         <h1 class="fw-bold text-light mb-4">About PureClean</h1>

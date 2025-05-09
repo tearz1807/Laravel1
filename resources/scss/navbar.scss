@@ -1,6 +1,6 @@
 .navbar{
-    height: 80px;
-    background: linear-gradient(to right, #004494, rgba(23, 162, 184));
+    height: 90px;
+    background: linear-gradient(to right, #003a7d, rgba(23, 162, 184));
 }
 
 .btn-custom {
@@ -46,3 +46,9 @@
     color: $primary-color;
     text-decoration: none;
 }
+
+.navbar-toggler {
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }

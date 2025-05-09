@@ -1,0 +1,20 @@
+.knowledge-materials{
+    background: linear-gradient(to right, #003a7d, rgba(23, 162, 184));
+    .file-system {
+        font-family: 'Courier New', monospace;
+    }
+    .folder {
+        cursor: pointer;
+        padding: 5px 0;
+    }
+    .file {
+        padding: 3px 0;
+    }
+    .text-orange {
+        color: #fd7e14;
+    }
+    .accordion-button {
+        font-family: 'Courier New', monospace;
+    }
+    
+}

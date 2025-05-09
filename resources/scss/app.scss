@@ -6,6 +6,13 @@ $secondary-color: #555;
 $primary-color: #007bff;
 
 @import 'navbar.scss';
-@import 'first-page.scss';
-@import 'second-page.scss';
+@import 'home-page-styles/expertise.scss';
+@import 'home-page-styles/about.scss';
 @import 'down-menu';
+@import "reminds/checklist.scss";
+@import "reminds/plan.scss";
+@import "knowledge/materials.scss";
+@import "knowledge/process.scss";
+@import "knowledge/header.scss";
+@import "usage/steps.scss";
+@import "reminds/statistic.scss";

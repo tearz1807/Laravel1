@@ -1,5 +1,5 @@
 .down-menu {
-    background-color: #f8f9fa;
+    background: linear-gradient(to right, #003a7d, rgba(23, 162, 184));
     padding: 30px 0;
 }
 .down-menu h4 {
@@ -11,12 +11,4 @@
 .social i {
     margin-right: 15px;
     font-size: 20px;
-}
-
-h4{
-    color: $primary-color;
-}
-
-.bi{
-    color: $primary-color;
 }

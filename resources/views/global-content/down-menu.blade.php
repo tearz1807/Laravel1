@@ -1,9 +1,9 @@
-<div class="container d-flex justify-content-center align-items-center w-100">
-    <div class="down-menu">
-        <div class="row">
+<div class="down-menu text-light border-top border-dark border-opacity-10">
+    <div class="container">
+        <div class="row g-5">
             <div class="col-md-3 text-center">
-                <i class="bi bi-bank2" style="font-size: 80px;"></i>
-                <p class="fw-bold">Making Clean Spaces, Happy Places</p>
+                <i class="bi bi-bank2 text-light" style="font-size: 80px;"></i>
+                <p class="fw-bold text-light">Making Clean Spaces, Happy Places</p>
             </div>
 
             <div class="col-md-3">
@@ -17,7 +17,7 @@
 
             <div class="col-md-3">
                 <h4>About PureClean</h4>
-                <p>We provide top-quality cleaning services for homes and businesses, ensuring a healthy and fresh environment.</p>
+                <p class="text-light">We provide top-quality cleaning services for homes and businesses, ensuring a healthy and fresh environment.</p>
             </div>
 
             <div class="col-md-3">
@@ -31,8 +31,10 @@
             </div>
         </div>
 
-        <div class="text-center mt-3">
-            <p>© 2025 company name. All rights reserved.</p>
+        <div class="row mt-3">
+            <div class="col-12 text-center mt-4">
+                <p class="text-light">© 2025 company name. All rights reserved.</p>
+            </div>
         </div>
     </div>
 </div>

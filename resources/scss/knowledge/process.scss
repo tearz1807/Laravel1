@@ -1,0 +1,10 @@
+.process-item {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--bs-primary) !important;
+    box-shadow: 0 3px 8px rgba(var(--bs-primary-rgb), 0.15);
+  }
+}
