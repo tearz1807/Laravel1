@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PureClean — @yield('title', 'Главная')</title>
     @vite(['resources/scss/app.scss'])
+    @php
+        $locale = request()->cookie('locale', 'en');
+        app()->setLocale($locale);
+    @endphp
+    
 </head>
 <body>
-    
-    @yield('navbar')       
-    @yield('Home-content')
-    @yield('Reminder')
-    @yield('Knowledge')
-    @yield('Usage')
-    @yield('down-menu')
+    <div class="navbar">
+        @include('global-content/navbar')
+    </div>
+
+
+    @yield('Content')
+
+
+    <div class="down-menu">
+        @include('global-content/down-menu')
+      </div>
 
     @vite(['resources/js/app.js'])
     

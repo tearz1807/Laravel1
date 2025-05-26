@@ -6,8 +6,8 @@ $secondary-color: #555;
 $primary-color: #007bff;
 
 @import 'navbar.scss';
-@import 'home-page-styles/expertise.scss';
-@import 'home-page-styles/about.scss';
+@import 'welcome/expertise.scss';
+@import 'welcome/about.scss';
 @import 'down-menu';
 @import "reminds/checklist.scss";
 @import "reminds/plan.scss";

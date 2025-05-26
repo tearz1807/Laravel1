@@ -1,14 +1,8 @@
 @extends('layout.app')
 
-@section('navbar')
+@section('title', 'Карта знаний')
 
-  <div class="navbar">
-    @include('global-content/navbar')
-  </div>
-
-@endsection
-
-@section('Knowledge')
+@section('Content')
 
   <div class="header">
     @include('knowledge/header')
@@ -25,12 +19,4 @@
   <div class="faq">
     @include('knowledge/faq')
   </div>
-@endsection
-
-@section('down-menu')
-
-  <div class="down-menu">
-    @include('global-content/down-menu')
-  </div>
-
 @endsection

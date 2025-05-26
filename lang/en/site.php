@@ -1,0 +1,22 @@
+<?php
+return [
+    'name' => 'PureClean',
+    'home' => 'Home',
+    'reminders' => 'Reminders',
+    'knowledge_map' => 'Knowledge Map',
+    'how_to_use' => 'How to Use',
+    'login' => 'Login',
+    'register' => 'Registration',
+    'contact_us' => 'Contact Us',
+    'phone' => '+1 234 567 890',
+    'email' => 'contact@youremail.com',
+    'address' => '123 State St., City, Country',
+    'about' => 'About PureClean',
+    'about_text' => 'We provide top-quality cleaning services for homes and businesses, ensuring a healthy and fresh environment.',
+    'follow_us' => 'Follow Us',
+    'copyright' => '© 2025 :name. All rights reserved.',
+    'slogan' => 'Making Clean Spaces, Happy Places',
+    'mail' => 'Email',
+    'password' => 'Password',
+    'close' => 'Close',
+];

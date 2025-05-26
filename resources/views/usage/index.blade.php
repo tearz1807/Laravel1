@@ -1,14 +1,8 @@
 @extends('layout.app')
 
-@section('navbar')
+@section('title', 'Как пользоваться')
 
-  <div class="navbar">
-    @include('global-content/navbar')
-  </div>
-
-@endsection
-
-@section('Usage')
+@section('Content')
 
   <div class="steps">
     @include('usage/steps')
@@ -20,10 +14,3 @@
 
 @endsection
 
-@section('down-menu')
-
-  <div class="down-menu">
-    @include('global-content/down-menu')
-  </div>
-
-@endsection

@@ -3,19 +3,29 @@
         <a class="navbar-brand" href="#">
             <i class="bi bi-bank2 text-light"></i>
         </a>
-        <button class="navbar-toggler navbar-dark border-0" type="button" data-bs-toggle="modal" data-bs-target="#navbarModal" aria-controls="navbarModal" aria-expanded="false" aria-label="Переключить навигацию">
+        <button class="navbar-toggler navbar-dark border-0" type="button" data-bs-toggle="modal" data-bs-target="#navbarModal" aria-controls="navbarModal" aria-expanded="false" aria-label="{{ __('site.toggle_navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav fw-bold">
-                <li class="nav-item me-3"><a class="nav-link text-white" href="{{route('home')}}">Главная</a></li>
-                <li class="nav-item me-3"><a class="nav-link text-white" href="{{ route('reminders.index') }}">Напоминания</a></li>
-                <li class="nav-item me-3"><a class="nav-link text-white" href="{{ route('knowledge.index') }}">Карта знаний</a></li>
-                <li class="nav-item me-3"><a class="nav-link text-white" href="{{ route('usage.index') }}">Как пользоваться</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="{{route('home')}}">{{ __('site.home') }}</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="{{ route('reminders.index') }}">{{ __('site.reminders') }}</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="{{ route('knowledge.index') }}">{{ __('site.knowledge_map') }}</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-white" href="{{ route('usage.index') }}">{{ __('site.how_to_use') }}</a></li>
             </ul>
-            <div class="d-flex">
-                <button class="btn btn-custom me-2 fw-bold" data-bs-toggle="modal" data-bs-target="#loginModal">Вход</button>
-                <button class="btn btn-custom fw-bold" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
+            <div class="d-flex align-items-center">
+                <div class="dropdown me-3">
+                    <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ strtoupper(app()->getLocale()) }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item {{ app()->getLocale() == 'ru' ? 'active' : '' }}" href="{{ route('language.switch', 'ru') }}">Русский (RU)</a></li>
+                        <li><a class="dropdown-item {{ app()->getLocale() == 'en' ? 'active' : '' }}" href="{{ route('language.switch', 'en') }}">English (EN)</a></li>
+                    </ul>
+                </div>
+                
+                <button class="btn btn-custom me-2 fw-bold text-primary" data-bs-toggle="modal" data-bs-target="#loginModal">{{ __('site.login') }}</button>
+                <button class="btn btn-custom fw-bold text-primary" data-bs-toggle="modal" data-bs-target="#registerModal">{{ __('site.register') }}</button>
             </div>
         </div>
     </div>
@@ -28,25 +38,33 @@
                 <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body d-flex flex-column justify-content-center px-4">
+                <div class="mb-4">
+                    <select class="form-select bg-primary text-white border-white border-opacity-25 fs-4 py-3" 
+                            onchange="window.location.href = '/language/' + this.value">
+                        <option value="ru" {{ app()->getLocale() == 'ru' ? 'selected' : '' }}>Русский</option>
+                        <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                    </select>
+                </div>
+
                 <ul class="list-group list-group-flush bg-transparent mb-4">
                     <li class="list-group-item bg-transparent border-0 py-3">
-                        <a class="text-white text-decoration-none fs-3 hover-effect" href="{{route('home')}}">Главная</a>
+                        <a class="text-white text-decoration-none fs-3 hover-effect" href="{{route('home')}}">{{ __('site.home') }}</a>
                     </li>
                     <li class="list-group-item bg-transparent border-0 py-3">
-                        <a class="text-white text-decoration-none fs-3 hover-effect" href="{{route('reminders.index')}}">Напоминания</a>
+                        <a class="text-white text-decoration-none fs-3 hover-effect" href="{{route('reminders.index')}}">{{ __('site.reminders') }}</a>
                     </li>
                     <li class="list-group-item bg-transparent border-0 py-3">
-                        <a class="text-white text-decoration-none fs-3 hover-effect" href="{{ route('knowledge.index') }}">Карта знаний</a>
+                        <a class="text-white text-decoration-none fs-3 hover-effect" href="{{ route('knowledge.index') }}">{{ __('site.knowledge_map') }}</a>
                     </li>
                     <li class="list-group-item bg-transparent border-0 py-3">
-                        <a class="text-white text-decoration-none fs-3 hover-effect" href="{{ route('usage.index') }}">Как пользоваться</a>
+                        <a class="text-white text-decoration-none fs-3 hover-effect" href="{{ route('usage.index') }}">{{ __('site.how_to_use') }}</a>
                     </li>
                 </ul>
                 
                 <div class="d-flex flex-column align-items-center mt-4">
                     <div class="border-top border-white border-opacity-25 w-100 my-3"></div>
-                    <button class="btn btn-custom-modal btn-light fw-bold w-100 mb-3" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Вход</button>
-                    <button class="btn btn-custom-modal btn-outline-light fw-bold w-100" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Регистрация</button>
+                    <button class="btn btn-custom-modal btn-light fw-bold w-100 mb-3 text-primary" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">{{ __('site.login') }}</button>
+                    <button class="btn btn-custom-modal btn-outline-light fw-bold w-100 text-primary bg-light" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">{{ __('site.register') }}</button>
                 </div>
             </div>
         </div>
@@ -57,24 +75,24 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Вход</h5>
+                <h5 class="modal-title" id="loginModalLabel">{{ __('site.login') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Почта:</label>
+                        <label for="email" class="form-label">{{ __('site.mail') }}:</label>
                         <input type="email" class="form-control" id="email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Пароль:</label>
+                        <label for="password" class="form-label">{{ __('site.password') }}:</label>
                         <input type="password" class="form-control" id="password" required>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Войти</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.close') }}</button>
+                <button type="button" class="btn btn-primary">{{ __('site.login') }}</button>
             </div>
         </div>
     </div>
@@ -84,24 +102,24 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="registerModalLabel">Регистрация</h5>
+                <h5 class="modal-title" id="registerModalLabel">{{ __('site.register') }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
-                        <label for="regEmail" class="form-label">Почта:</label>
+                        <label for="regEmail" class="form-label">{{ __('site.mail') }}:</label>
                         <input type="email" class="form-control" id="regEmail" required>
                     </div>
                     <div class="mb-3">
-                        <label for="regPassword" class="form-label">Пароль:</label>
+                        <label for="regPassword" class="form-label">{{ __('site.password') }}:</label>
                         <input type="password" class="form-control" id="regPassword" required>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="button" class="btn btn-primary">Зарегистрироваться</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.close') }}</button>
+                <button type="button" class="btn btn-primary">{{ __('site.register') }}</button>
             </div>
         </div>
     </div>

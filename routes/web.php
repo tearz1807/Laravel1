@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home-page-content.welcome');
+    return view('welcome.index');
 })->name('home');
 
 Route::get('/reminders', function () {
@@ -17,3 +17,10 @@ Route::get('/knowledge', function () {
 Route::get('/usage', function () {
     return view('usage.index');
 })->name('usage.index');
+
+Route::get('/language/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'ru'])) {
+        abort(400);
+    }
+    return back()->withCookie(cookie()->forever('locale', $locale));
+})->name('language.switch');

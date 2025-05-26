@@ -5,13 +5,12 @@
 
 .btn-custom {
     background-color: $white;
-    color: #004494;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
     border-radius: 30px;
     padding: 10px 15px;
 
     &:hover{
-        color: $white;
+        color: $white !important;
         border: 2px solid $white;
     }
 }

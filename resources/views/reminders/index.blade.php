@@ -2,15 +2,8 @@
 
 @section('title', 'Напоминания')
 
-@section('navbar')
 
-  <div class="navbar">
-    @include('global-content/navbar')
-  </div>
-
-@endsection
-
-@section('Reminder')
+@section('Content')
 
   <div class="checklist">
     @include('reminders/checklist')
@@ -26,10 +19,3 @@
 
 @endsection
 
-@section('down-menu')
-
-  <div class="down-menu">
-    @include('global-content/down-menu')
-  </div>
-
-@endsection

@@ -3,25 +3,26 @@
         <div class="row g-5">
             <div class="col-md-3 text-center">
                 <i class="bi bi-bank2 text-light" style="font-size: 80px;"></i>
-                <p class="fw-bold text-light">Making Clean Spaces, Happy Places</p>
+                <p class="fw-bold text-light">{{ __('site.slogan') }}</p>
             </div>
 
             <div class="col-md-3">
-                <h4>Contact Us</h4>
+                <h4>{{ __('site.contact_us') }}</h4>
                 <ul class="contact list-unstyled">
-                    <li><i class="bi bi-telephone"></i> +1 234 567 890</li>
-                    <li><i class="bi bi-envelope"></i> contact@youremail.com</li>
-                    <li><i class="bi bi-geo-alt"></i> 123 State St., City, Country</li>
+                    <li><i class="bi bi-telephone"></i> {{ __('site.phone') }}</li>
+                    <li><i class="bi bi-envelope"></i> {{ __('site.email') }}</li>
+                    <li><i class="bi bi-envelope"></i> {{ __('site.name') }}</li>
+                    <li><i class="bi bi-geo-alt"></i> {{ __('site.address') }}</li>
                 </ul>
             </div>
 
             <div class="col-md-3">
-                <h4>About PureClean</h4>
-                <p class="text-light">We provide top-quality cleaning services for homes and businesses, ensuring a healthy and fresh environment.</p>
+                <h4>{{ __('site.about') }}</h4>
+                <p class="text-light">{{ __('site.about_text') }}</p>
             </div>
 
             <div class="col-md-3">
-                <h4>Follow Us</h4>
+                <h4>{{ __('site.follow_us') }}</h4>
                 <div class="social">
                     <i class="bi bi-facebook"></i>
                     <i class="bi bi-whatsapp"></i>
@@ -33,7 +34,7 @@
 
         <div class="row mt-3">
             <div class="col-12 text-center mt-4">
-                <p class="text-light">© 2025 company name. All rights reserved.</p>
+                <p class="text-light">{{ __('site.copyright', ['name' => __('site.name')]) }}</p>
             </div>
         </div>
     </div>
