@@ -6,7 +6,14 @@ import viteCompression from 'vite-plugin-compression';
 
 export default defineConfig({
     plugins: [
-        vue(),
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
         viteCompression(),
         laravel({
             input: ['resources/scss/app.scss', 'resources/js/app.js'],

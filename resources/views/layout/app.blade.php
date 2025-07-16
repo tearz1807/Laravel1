@@ -16,6 +16,13 @@
         @include('global-content/navbar')
     </div>
 
+    <div class="py-4" id="app">
+        
+        <Modal title="Init title">13
+            <login-form></login-form>
+            213
+        </Modal>
+    </div>
 
     @yield('Content')
 
