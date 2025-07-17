@@ -4,6 +4,10 @@ export default createStore({
     state: {
         test: 'test Any Components',
         version:'',
+        login_form: {
+            email: '',
+            password: '',
+        },
     },
     actions: {
         testAction(context, payload) {

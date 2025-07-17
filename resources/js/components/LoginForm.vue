@@ -1,26 +1,29 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="login-form">
+  <form class="login-form">
+    <slot></slot>
     <div class="form-floating mb-3">
       <input 
         type="email" 
         class="form-control" 
         placeholder="Email"
-        v-model="email"
+        v-model="data.email"
         required
       >
-      <label>Email</label>
+      <label>Почта</label>
     </div>
     <div class="form-floating mb-3">
       <input 
         type="password" 
         class="form-control" 
         placeholder="Пароль"
-        v-model="password"
+        v-model="data.password"
         required
       >
       <label>Пароль</label>
     </div>
-    <button type="submit" class="btn btn-primary w-100">Войти</button>
+    <teleport to="#modal-footer" v-if="isParentMount">
+      <button class="btn btn-primary w-100" @click="handleSubmit(data)">Войти</button>
+    </teleport>
   </form>
 </template>
 
@@ -29,17 +32,26 @@
 export default {
   data() {
     return {
-      email: '',
-      password: ''
+      data: {
+        email: '',
+        password: '',
+      },
+      isParentMount: false,
     }
   },
   methods: {
-    handleSubmit() {
+    handleSubmit(data) {
       console.log('Отправка данных:', {
-        email: this.email,
-        password: this.password
+        email: this.data.email,
+        password: this.data.password,
+        data
       });
     }
+  },
+  mounted(){
+    this.data = this.$store.state.login_form;
+    console.log('mounted login form');
+    this.$parent.onLoad(this);
   }
 }
 </script>

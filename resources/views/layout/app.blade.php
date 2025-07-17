@@ -17,10 +17,8 @@
     </div>
 
     <div class="py-4" id="app">
-        
-        <Modal title="Init title">13
+        <Modal title="Вход">
             <login-form></login-form>
-            213
         </Modal>
     </div>
 

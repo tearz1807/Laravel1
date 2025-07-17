@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="showModal = true">Открыть модалку</button>
-    <Modal 
+    <Modal
       :show="showModal" 
       title="Авторизация"
       :show-login-form="true"
