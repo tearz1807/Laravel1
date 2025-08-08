@@ -1,24 +1,43 @@
 import './bootstrap';
-
-import { createApp } from 'vue';
-
-import App from './App.vue';
+import { createApp, defineAsyncComponent } from 'vue';
 import store from './store';
 
 const app = createApp({
-    mounted(){
-        console.log('mounted');
-    }
+  data(){
+    this.$store.dispatch('loadTranslate');
+    return {};
+  },
+  mounted() {
+    console.log('App mounted');
+  }
 });
-
-
-import LoginForm from './components/LoginForm.vue';
-import Modal from './components/Modal.vue';
-
-app.component('LoginForm', LoginForm);
-app.component('Modal', Modal);
-
 app.use(store);
 
+const lang = function() {
+  return this.$store.state.translations;
+}
+app.config.globalProperties.$lang = function() {
+  return this.$store.state.translations;
+};
+
+window.$getModal = app.config.globalProperties.$getModal = function(id) {
+  return store.state.regModal[id];
+};
+
+app.config.globalProperties.$setGlobalLoading = function(loading) {
+  this.$refs.globalSpinner?.[loading ? 'show' : 'hide']();
+};
+
+import Modal from './components/Modal.vue';
+const LoginForm = defineAsyncComponent(() => import('./components/LoginForm.vue'));
+const RegistrationForm = defineAsyncComponent(() => import('./components/RegistrationForm.vue'));
+const PasswordResetForm = defineAsyncComponent(() => import('./components/PasswordResetForm.vue'));
+import GlobalSpinner from './components/GlobalSpinner.vue';
+
+app.component('Modal', Modal);
+app.component('LoginForm', LoginForm);
+app.component('RegistrationForm', RegistrationForm);
+app.component('PasswordResetForm', PasswordResetForm);
+app.component('GlobalSpinner', GlobalSpinner);
 
 app.mount('#app');

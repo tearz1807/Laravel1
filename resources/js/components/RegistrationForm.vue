@@ -1,5 +1,16 @@
 <template>
-  <form class="login-form">
+  <form class="registration-form">
+    <div class="form-floating mb-3">
+      <input 
+        type="text" 
+        class="form-control" 
+        :placeholder="translations.name"
+        v-model="data.name"
+        required
+      >
+      <label>{{ translations.name }}</label>
+    </div>
+    
     <div class="form-floating mb-3">
       <input 
         type="email" 
@@ -10,6 +21,7 @@
       >
       <label>{{ translations.email }}</label>
     </div>
+
     <div class="form-floating mb-3">
       <input 
         type="password" 
@@ -21,12 +33,20 @@
       <label>{{ translations.password }}</label>
     </div>
 
-    <div class="d-flex justify-content-between mt-3">
-      <a href="#" @click.prevent="switchToReset" class="text-decoration-none">
-        {{ translations.forgot_password }}
-      </a>
-      <a href="#" @click.prevent="switchToRegister" class="text-decoration-none">
-        {{ translations.register_link }}
+    <div class="form-floating mb-3">
+      <input 
+        type="password" 
+        class="form-control" 
+        :placeholder="translations.password_confirmation"
+        v-model="data.password_confirmation"
+        required
+      >
+      <label>{{ translations.password_confirmation }}</label>
+    </div>
+
+    <div class="text-center mt-3">
+      <a href="#" @click.prevent="switchToLogin" class="text-decoration-none">
+        {{ translations.login_link }}
       </a>
     </div>
 
@@ -46,18 +66,17 @@ export default {
   data() {
     return {
       data: {
+        name: '',
         email: '',
         password: '',
+        password_confirmation: '',
       },
-      translations: this.$lang().LoginForm
+      translations: this.$lang().RegistrationForm
     }
   },
   methods: {
-    switchToReset() {
-      this.$emit('switch-form', 'passwordReset');
-    },
-    switchToRegister() {
-      this.$emit('switch-form', 'register');
+    switchToLogin() {
+      this.$emit('switch-form', 'login');
     },
     handleSubmit() {
       this.$root.$setGlobalLoading(true);

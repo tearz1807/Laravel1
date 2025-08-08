@@ -122,5 +122,10 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
-
+    'translations' => [
+        'paths' => [
+            resource_path('lang'),
+            base_path('lang'),
+        ],
+    ],
 ];

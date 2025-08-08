@@ -10,16 +10,21 @@
         app()->setLocale($locale);
     @endphp
     
+    <script>
+        window.vueTranslations = @json(__('vue'));
+        window.appLocale = "{{ app()->getLocale() }}";
+    </script>
 </head>
 <body>
     <div class="navbar">
         @include('global-content/navbar')
     </div>
 
-    <div class="py-4" id="app">
-        <Modal title="Вход">
-            <login-form></login-form>
-        </Modal>
+    <div id="app">
+        <global-spinner ref="globalSpinner"></global-spinner>
+        <modal modal-id="loginModal" set-component="LoginForm"></modal>
+        <modal modal-id="registerModal" set-component="RegistrationForm"></modal>
+        <modal modal-id="passwordResetModal" set-component="PasswordResetForm"></modal>
     </div>
 
     @yield('Content')
