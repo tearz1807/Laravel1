@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome.index');
@@ -45,6 +46,8 @@ Route::get('/test', function(){
     $test = new TestController(1000);
 })->name('translate');
 
+Route::post('/login', [AuthController::class, 'login']);
+
 
 use App\Http\Controllers\MazeController;
 use App\Http\Controllers\MazeBuilderController;
@@ -57,3 +60,10 @@ Route::get('/builder', [MazeBuilderController::class, 'build']);
 Route::get('/factory', [DocumentController::class, 'create']);
 Route::get('/prototype', [PrototypeController::class, 'clone']);
 Route::get('/singleton', [SingletonController::class, 'show']);
+
+use App\Http\Middleware\ResponseDelay;
+use App\Http\Controllers\ApiController;
+
+Route::middleware([ResponseDelay::class])->group(function () {
+    Route::get('/endpoint', [ApiController::class, 'ApiMethod']);
+});

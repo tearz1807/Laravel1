@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>PureClean — @yield('title', 'Главная')</title>
     @vite(['resources/scss/app.scss'])
     @php
@@ -22,7 +23,7 @@
 
     <div id="app">
         <global-spinner ref="globalSpinner"></global-spinner>
-        <modal modal-id="loginModal" set-component="LoginForm"></modal>
+        <modal modal-id="loginModal" set-component="LoginForm" :collback="function(word) { console.log(word+tttt) }"></modal>
         <modal modal-id="registerModal" set-component="RegistrationForm"></modal>
         <modal modal-id="passwordResetModal" set-component="PasswordResetForm"></modal>
     </div>

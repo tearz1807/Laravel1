@@ -1,6 +1,11 @@
+import axios from 'axios';
+window.axios = axios;
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.withCredentials = true;
 import './bootstrap';
 import { createApp, defineAsyncComponent } from 'vue';
 import store from './store';
+import '/resources/scss/app.scss';
 
 const app = createApp({
   data(){

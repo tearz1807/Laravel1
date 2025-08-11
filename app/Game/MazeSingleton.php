@@ -2,18 +2,24 @@
 
 namespace App\Game;
 
-class MazeSingleton {
+class MazeSingleton
+{
     private static $instance;
-    
+    private $params = [];
+
     private function __construct() {}
-    
-    public static function getInstance(): MazeSingleton {
+
+    public static function getInstance(): self{
         if (!self::$instance) {
             self::$instance = new self();
         }
-        return self::$instance;
+        return self::$instance;}
+
+    public function setParam($key, $value): void{
+        $this->params[$key] = $value;
     }
-    public function getInstanceId(): int{
-        return spl_object_id($this);
+
+    public function getParam($key){
+        return $this->params[$key] ?? null;
     }
 }

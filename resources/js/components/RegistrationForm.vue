@@ -78,12 +78,9 @@ export default {
     switchToLogin() {
       this.$emit('switch-form', 'login');
     },
-    handleSubmit() {
-      this.$root.$setGlobalLoading(true);
-      setTimeout(() => this.$root.$setGlobalLoading(false), 2000);
-    }
   },
   mounted() {
+    this.$emit('loaded', this);
     this.$parent.title = this.translations.title;
   }
 }

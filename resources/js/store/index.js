@@ -16,22 +16,20 @@ export default createStore({
       state.test = payload
     },
     SET_TRANSLATIONS(state, translations) {
-      state.translations = translations
+      state.translations = translations;
     },
     registerModal(state, { id, instance }) {
       state.regModal[id] = instance;
     },
   },
-  actions: {
-    loadTranslate(context, payload) {
-      return axios.get('/translate', payload)
+    actions: {
+    loadTranslate({ commit }) {
+      return axios.get('/translate')
         .then(response => {
-          context.commit('SET_TRANSLATIONS', response.data.info)
+          commit('SET_TRANSLATIONS', response.data.info || response.data);
         })
-        .catch(error => {
-          console.error('Translation load error:', error)
-        })
-    },
+        .catch(console.error);
+    }
   },
   getters: {
     t(state) {

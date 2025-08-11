@@ -7,9 +7,9 @@ use App\Game\StandardMazeFactory;
 
 class MazeController extends Controller
 {
-    public function createMaze(MazeFactory $factory = null)
+    public function createMaze(MazeFactory $factory = new StandardMazeFactory())
     {
-        $factory = $factory ?? new StandardMazeFactory();
+        //$factory = $factory ?? new StandardMazeFactory();
         
         $maze = $factory->makeMaze();
         $r1 = $factory->makeRoom(1);

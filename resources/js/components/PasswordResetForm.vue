@@ -46,15 +46,12 @@ export default {
     switchToLogin() {
       this.$emit('switch-form', 'login');
     },
-    handleSubmit() {
-      this.$root.$setGlobalLoading(true);
-      setTimeout(()=>this.resolve(), 2000);
-    },
     resolve(){
       this.$root.$setGlobalLoading(false);
     },
   },
   mounted() {
+    this.$emit('loaded', this);
     this.$parent.title = this.translations.title;
   }
 }
