@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Game\MazeFactory;
 use App\Game\StandardMazeFactory;
 

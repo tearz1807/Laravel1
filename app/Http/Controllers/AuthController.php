@@ -2,22 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
+    public function register(Request $request)
     {
-        Log::debug('Login attempt', $request->all());
-        
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string|min:6'
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:6|confirmed'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password'])
+        ]);
+
+        Auth::login($user);
+
+        return response()->json([
+            'success' => true,
+            'user' => $user
+        ]);
+    }
+
+    public function login(Request $request)
+    {
+        if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
             return response()->json([
                 'success' => true,
@@ -27,7 +43,7 @@ class AuthController extends Controller
 
         return response()->json([
             'success' => false,
-            'error' => 'The provided credentials do not match our records.'
+            'error' => 'Invalid credentials'
         ], 401);
     }
 }

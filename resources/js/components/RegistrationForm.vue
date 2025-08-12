@@ -1,5 +1,5 @@
 <template>
-  <form class="registration-form">
+  <form class="registration-form" @submit.prevent="handleSubmit" ref="regForm">
     <div class="form-floating mb-3">
       <input 
         type="text" 
@@ -33,6 +33,11 @@
       <label>{{ translations.password }}</label>
     </div>
 
+      <div v-if="error" class="alert alert-danger mt-3">
+        {{ error }}
+      </div>
+
+
     <div class="form-floating mb-3">
       <input 
         type="password" 
@@ -51,8 +56,17 @@
     </div>
 
     <teleport :to="`#${modalId}_footer`" v-if="modalId">
-      <button type="button" class="btn btn-primary w-100" @click="handleSubmit">
-        {{ translations.submit }}
+      <button 
+        type="button"
+        class="btn btn-primary w-100"
+        :disabled="isLoading"
+        @click="$refs.regForm.requestSubmit()"
+      >
+        <span v-if="!isLoading">{{ translations.submit }}</span>
+        <span v-else class="d-flex align-items-center justify-content-center">
+          <span class="spinner-border spinner-border-sm me-2"></span>
+          {{ translations.loading || 'Loading...' }}
+        </span>
       </button>
     </teleport>
   </form>
@@ -71,17 +85,41 @@ export default {
         password: '',
         password_confirmation: '',
       },
+      error: null,
+      isLoading: false,
       translations: this.$lang().RegistrationForm
     }
   },
   methods: {
+    async handleSubmit() {
+      this.error = null;
+      this.isLoading = true;
+      try {
+        const { data } = await axios.post('/register', {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.passwordConfirmation
+        });
+        if (data.success) {
+          this.$emit('close-modal');
+          window.location.reload();
+        }
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Registration failed';
+      } finally {
+        this.isLoading = false;
+      }
+    },
     switchToLogin() {
       this.$emit('switch-form', 'login');
     },
   },
   mounted() {
     this.$emit('loaded', this);
-    this.$parent.title = this.translations.title;
+    if (this.$parent) {
+      this.$parent.title = this.translations.title || 'Register';
+    }
   }
 }
 </script>

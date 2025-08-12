@@ -10,6 +10,7 @@ export default createStore({
     },
     translations: {},
     regModal: {},
+    user: null,
   },
   mutations: {
     SET_TEST(state, payload) {
@@ -21,15 +22,26 @@ export default createStore({
     registerModal(state, { id, instance }) {
       state.regModal[id] = instance;
     },
+    SET_USER(state, user) {
+      state.user = user;
+    },
   },
-    actions: {
+  actions: {
     loadTranslate({ commit }) {
       return axios.get('/translate')
         .then(response => {
           commit('SET_TRANSLATIONS', response.data.info || response.data);
         })
         .catch(console.error);
-    }
+    },
+    async checkAuth({ commit }) {
+      try {
+        const response = await axios.get('/api/user');
+        commit('SET_USER', response.data);
+      } catch (error) {
+        commit('SET_USER', null);
+      }
+    },
   },
   getters: {
     t(state) {
@@ -39,6 +51,7 @@ export default createStore({
         }, state.translations) || key
       }
     },
-    getModal: (state) => (id) => state.regModal[id] || null
+    getModal: (state) => (id) => state.regModal[id] || null,
+    isAuthenticated: state => !!state.user,
   }
 })

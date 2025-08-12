@@ -70,16 +70,16 @@ export default {
       this.error = null;
       this.isLoading = true;
       try {
-        const { data } = await axios.post('/login', {
-          email: this.email,
-          password: this.password
+        const { data } = await axios.post('/login', { 
+          email: this.email, 
+          password: this.password 
         });
         if (data.success) {
-          this.$parent?.close();
+          this.$emit('close-modal');
           window.location.reload();
         }
       } catch (error) {
-        this.error = error.response?.data?.error || 'Ошибка авторизации';
+        this.error = error.response?.data?.error || 'Login failed';
       } finally {
         this.isLoading = false;
       }

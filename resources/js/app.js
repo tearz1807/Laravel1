@@ -10,6 +10,7 @@ import '/resources/scss/app.scss';
 const app = createApp({
   data(){
     this.$store.dispatch('loadTranslate');
+    this.$store.dispatch('checkAuth');
     return {};
   },
   mounted() {

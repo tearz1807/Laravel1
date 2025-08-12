@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome.index');
@@ -47,6 +48,11 @@ Route::get('/test', function(){
 })->name('translate');
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/api/user', function (Request $request) {
+    return response()->json($request->user());
+})->middleware('auth');
+
 
 
 use App\Http\Controllers\MazeController;
