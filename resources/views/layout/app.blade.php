@@ -17,11 +17,11 @@
     </script>
 </head>
 <body>
-    <div class="navbar">
-        @include('global-content/navbar')
-    </div>
 
     <div id="app">
+        <div class="navbar">
+            @include('global-content/navbar')
+        </div>
         <global-spinner ref="globalSpinner"></global-spinner>
         <modal modal-id="loginModal" set-component="LoginForm" :collback="function(word) { console.log(word+tttt) }"></modal>
         <modal modal-id="registerModal" set-component="RegistrationForm"></modal>

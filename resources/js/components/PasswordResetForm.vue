@@ -44,15 +44,25 @@ export default {
   },
   methods: {
     switchToLogin() {
-      this.$emit('switch-form', 'login');
+      this.$store.getters.getModal('passwordResetModal')?.switchTo('login');
+    },
+    handleSubmit() {
+      this.$axios({
+        method: 'post',
+        url: '/forgot-password',
+        data: { email: this.data.email }
+      })
+      .then(data => {
+        alert('Инструкции отправлены на email!');
+        this.switchToLogin();
+      })
+      .catch(error => {
+        alert('Ошибка: ' + error.message);
+      });
     },
     resolve(){
       this.$root.$setGlobalLoading(false);
     },
-  },
-  mounted() {
-    this.$emit('loaded', this);
-    this.$parent.title = this.translations.title;
   }
 }
 </script>

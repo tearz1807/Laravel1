@@ -12,13 +12,11 @@
             <div class="spinner-border text-primary"></div>
           </div>
           <template v-else>
-            <a @click="myCollback">test</a>
             <component 
               v-if="beginLoad"
               :is="setComponent"
               ref="currentForm"
-              :modal-id="modalId"
-              @switch-form="handleFormSwitch">
+              :modal-id="modalId">
             </component>
           </template>
         </div>
@@ -36,7 +34,7 @@ export default {
     return {
       beginLoad: false,
       modalInstance: null,
-      loading: true
+      loading: false
     };
   },
   computed: {
@@ -51,7 +49,6 @@ export default {
     show() {
       if (!this.beginLoad) {
         this.beginLoad = true;
-        this.loadData();
       }
       this.modalInstance?.show();
     },
@@ -61,23 +58,12 @@ export default {
         {}
       );
     },
-    handleFormSwitch(formType) {
+    switchTo(formType) {
       this.close();
-      this.$nextTick(() => {
-        this.$store.getters.getModal(`${formType}Modal`)?.show();
-      });
+      this.$store.getters.getModal(`${formType}Modal`)?.show();
     },
     myCollback() {
-      tt=999;
-      yy=0;
       this.collback('click on modal');
-      xxxx(()=>console.log(tt,yy));
-    },
-    async loadData() {
-      this.loading = true;
-        const response = await fetch('/endpoint');
-        const data = await response.json();
-        this.loading = false;
     }
   },
   mounted() {

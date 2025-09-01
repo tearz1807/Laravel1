@@ -5,45 +5,46 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\LoginUserRequest;
+use App\Http\Resources\AuthResource;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function register(RegisterUserRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:6|confirmed'
-        ]);
-
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password'])
-        ]);
-
+        $user = User::NewUser($request->validated());
         Auth::login($user);
-
-        return response()->json([
-            'success' => true,
-            'user' => $user
-        ]);
+        
+        return new AuthResource($user);
     }
 
-    public function login(Request $request)
+    public function login(LoginUserRequest $request)
     {
-        if (Auth::attempt($request->only('email', 'password'))) {
-            $request->session()->regenerate();
+        if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
-                'success' => true,
-                'user' => Auth::user()
-            ]);
+                'error' => 'Invalid credentials'
+            ], 401);
         }
 
-        return response()->json([
-            'success' => false,
-            'error' => 'Invalid credentials'
-        ], 401);
+        return new AuthResource(Auth::user());
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        
+        return response()->json(['message' => 'Successfully logged out']);
+    }
+
+    public function getAuthenticatedUser(Request $request)
+    {
+        if (!$request->user()) {
+            return response()->json([
+                'error' => 'Not authenticated'
+            ], 401);
+        }
+        
+        return new AuthResource($request->user());
     }
 }

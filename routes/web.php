@@ -47,19 +47,17 @@ Route::get('/test', function(){
     $test = new TestController(1000);
 })->name('translate');
 
-Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/api/user', function (Request $request) {
-    return response()->json($request->user());
-})->middleware('auth');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
+Route::middleware('auth')->get('/api/user', [AuthController::class, 'getAuthenticatedUser']);
 
 
-
-use App\Http\Controllers\MazeController;
-use App\Http\Controllers\MazeBuilderController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\PrototypeController;
-use App\Http\Controllers\SingletonController;
+use App\Http\Controllers\Patterns\Creational\MazeController;
+use App\Http\Controllers\Patterns\Creational\MazeBuilderController;
+use App\Http\Controllers\Patterns\Creational\DocumentController;
+use App\Http\Controllers\Patterns\Creational\PrototypeController;
+use App\Http\Controllers\Patterns\Creational\SingletonController;
 
 Route::get('/abstract', [MazeController::class, 'createMaze']);
 Route::get('/builder', [MazeBuilderController::class, 'build']);
@@ -73,3 +71,56 @@ use App\Http\Controllers\ApiController;
 Route::middleware([ResponseDelay::class])->group(function () {
     Route::get('/endpoint', [ApiController::class, 'ApiMethod']);
 });
+
+use App\Http\Controllers\Patterns\Structural\AdapterController;
+
+Route::get('/adapter/class', [AdapterController::class, 'classAdapter']);
+Route::get('/adapter/object', [AdapterController::class, 'objectAdapter']);
+
+use App\Http\Controllers\Patterns\Structural\BridgeController;
+
+Route::get('bridge/demo', [BridgeController::class, 'demo']);
+Route::get('bridge/pm', [BridgeController::class, 'usePmImplementation']);
+Route::get('bridge/x11', [BridgeController::class, 'useX11Implementation']);
+
+use App\Http\Controllers\Patterns\Structural\CompositeController;
+
+Route::get('composite/demo', [CompositeController::class, 'demo']);
+
+use App\Http\Controllers\Patterns\Structural\DecoratorController;
+
+Route::get('decorator/demo', [DecoratorController::class, 'demo']);
+
+use App\Http\Controllers\Patterns\Structural\FacadeController;
+
+Route::get('facade/demo', [FacadeController::class, 'demo']);
+
+use App\Http\Controllers\Patterns\Structural\FlyweightController;
+
+Route::get('flyweight/demo', [FlyweightController::class, 'demo']);
+
+use App\Http\Controllers\Patterns\Structural\ProxyController;
+
+Route::get('proxy/demo', [ProxyController::class, 'demo']);
+
+use App\Http\Controllers\Patterns\Behavioral\ChainOfResponsibility\ChainOfResponsibilityController;
+use App\Http\Controllers\Patterns\Behavioral\Command\CommandController;
+use App\Http\Controllers\Patterns\Behavioral\Interpreter\InterpreterController;
+use App\Http\Controllers\Patterns\Behavioral\Iterator\IteratorController;
+use App\Http\Controllers\Patterns\Behavioral\Mediator\MediatorController;
+use App\Http\Controllers\Patterns\Behavioral\Memento\MementoController;
+use App\Http\Controllers\Patterns\Behavioral\Observer\ObserverController;
+
+Route::get('/patterns/chain', [ChainOfResponsibilityController::class, 'examples']);
+Route::post('/patterns/chain/process', [ChainOfResponsibilityController::class, 'processRequest']);
+Route::get('/patterns/command', [CommandController::class, 'simpleExample']);
+Route::post('/patterns/command', [CommandController::class, 'executeCommand']);
+Route::get('/patterns/interpreter', [InterpreterController::class, 'simpleExample']);
+Route::post('/patterns/interpreter/evaluate', [InterpreterController::class, 'evaluateExpression']);
+Route::get('/patterns/iterator', [IteratorController::class, 'simpleExample']);
+Route::post('/patterns/iterator/iterate', [IteratorController::class, 'customIteration']);
+Route::get('/patterns/mediator', [MediatorController::class, 'simpleExample']);
+Route::post('/patterns/mediator/event', [MediatorController::class, 'handleEvent']);
+Route::get('/patterns/memento', [MementoController::class, 'simpleExample']);
+Route::post('/patterns/memento/editor', [MementoController::class, 'textEditorDemo']);
+Route::get('/observer/simple', [ObserverController::class, 'simpleExample']);

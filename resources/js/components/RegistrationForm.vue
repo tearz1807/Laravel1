@@ -1,5 +1,5 @@
 <template>
-  <form class="registration-form" @submit.prevent="handleSubmit" ref="regForm">
+  <form class="registration-form">
     <div class="form-floating mb-3">
       <input 
         type="text" 
@@ -33,11 +33,6 @@
       <label>{{ translations.password }}</label>
     </div>
 
-      <div v-if="error" class="alert alert-danger mt-3">
-        {{ error }}
-      </div>
-
-
     <div class="form-floating mb-3">
       <input 
         type="password" 
@@ -49,8 +44,12 @@
       <label>{{ translations.password_confirmation }}</label>
     </div>
 
+    <div v-if="error" class="alert alert-danger mt-3">
+      {{ error.message || error }}
+    </div>
+
     <div class="text-center mt-3">
-      <a href="#" @click.prevent="switchToLogin" class="text-decoration-none">
+      <a href="#" @click="switchToLogin" class="text-decoration-none">
         {{ translations.login_link }}
       </a>
     </div>
@@ -60,7 +59,7 @@
         type="button"
         class="btn btn-primary w-100"
         :disabled="isLoading"
-        @click="$refs.regForm.requestSubmit()"
+        @click="handleSubmit"
       >
         <span v-if="!isLoading">{{ translations.submit }}</span>
         <span v-else class="d-flex align-items-center justify-content-center">
@@ -86,40 +85,46 @@ export default {
         password_confirmation: '',
       },
       error: null,
+      item: null,
       isLoading: false,
-      translations: this.$lang().RegistrationForm
+      translations: this.$lang().RegistrationForm || {}
+    }
+  },
+  watch: {
+    item(newVal) {
+      if (newVal && newVal.user) {
+        this.$store.commit('SET_USER', newVal.user);
+        this.closeModal();
+      }
     }
   },
   methods: {
-    async handleSubmit() {
-      this.error = null;
+    handleSubmit() {
       this.isLoading = true;
-      try {
-        const { data } = await axios.post('/register', {
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          password_confirmation: this.passwordConfirmation
-        });
-        if (data.success) {
-          this.$emit('close-modal');
-          window.location.reload();
+      this.error = null;
+      
+      this.axiosInstance.get({
+        data: this.data,
+        beforEr: (error) => {
+          return error.errors || error.error || error.message || 'Registration failed';
         }
-      } catch (error) {
-        this.error = error.response?.data?.message || 'Registration failed';
-      } finally {
-        this.isLoading = false;
-      }
+      });
     },
     switchToLogin() {
-      this.$emit('switch-form', 'login');
+      this.$store.getters.getModal('registerModal')?.switchTo('login');
     },
+    closeModal() {
+      this.$store.getters.getModal('registerModal')?.close();
+    }
   },
   mounted() {
-    this.$emit('loaded', this);
-    if (this.$parent) {
-      this.$parent.title = this.translations.title || 'Register';
-    }
+    this.axiosInstance = this.$axios({
+      t: this,
+      method: 'post',
+      url: '/register',
+      fildOk: 'item',
+      fildEr: 'error'
+    });
   }
 }
 </script>

@@ -39,20 +39,23 @@
                     </ul>
                 </div>
                 
-                <button class="btn btn-custom me-2 fw-bold text-primary"
-                    onclick="$getModal('loginModal')?.show()">
-                    {{ __('site.login') }}
-                </button>
+                <template v-if="!$store.state.user">
+                    <button class="btn btn-custom me-2 fw-bold text-primary"
+                        onclick="$getModal('loginModal')?.show()">
+                        {{ __('site.login') }}
+                    </button>
 
-                <button class="btn btn-custom fw-bold text-primary"
-                    onclick="$getModal('registerModal')?.show()">
-                    {{ __('site.register') }}
-                </button>
+                    <button class="btn btn-custom fw-bold text-primary"
+                        onclick="$getModal('registerModal')?.show()">
+                        {{ __('site.register') }}
+                    </button>
+                </template>
+                
+                <logout-button v-else></logout-button>
             </div>
         </div>
     </div>
 </nav>
-
 <div class="modal fade" id="navbarModal" tabindex="-1" aria-labelledby="navbarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen bg-primary">
         <div class="modal-content bg-primary h-100">
@@ -85,74 +88,23 @@
                 
                 <div class="d-flex flex-column align-items-center mt-4">
                     <div class="border-top border-white border-opacity-25 w-100 my-3"></div>
-                    <button class="btn btn-custom-modal btn-light fw-bold w-100 mb-3 text-primary" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#loginModal" 
-                            data-bs-dismiss="modal">
-                        {{ __('site.login') }}
-                    </button>
-                    <button class="btn btn-custom-modal btn-outline-light fw-bold w-100 text-primary bg-light" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#registerModal" 
-                            data-bs-dismiss="modal">
-                        {{ __('site.register') }}
-                    </button>
+                    
+                    <template v-if="!$store.state.user">
+                        <button class="btn btn-custom-modal btn-light fw-bold w-100 mb-3 text-primary" 
+                                onclick="$getModal('loginModal')?.show()" 
+                                data-bs-dismiss="modal">
+                            {{ __('site.login') }}
+                        </button>
+                        <button class="btn btn-custom-modal btn-outline-light fw-bold w-100 text-primary bg-light" 
+                                onclick="$getModal('registerModal')?.show()" 
+                                data-bs-dismiss="modal">
+                            {{ __('site.register') }}
+                        </button>
+                    </template>
+                    
+                    <logout-button v-else class="w-100" data-bs-dismiss="modal"></logout-button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-{{-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">{{ __('site.login') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">{{ __('site.mail') }}:</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">{{ __('site.password') }}:</label>
-                        <input type="password" class="form-control" id="password" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.close') }}</button>
-                <button type="button" class="btn btn-primary">{{ __('site.login') }}</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="registerModalLabel">{{ __('site.register') }}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="regEmail" class="form-label">{{ __('site.mail') }}:</label>
-                        <input type="email" class="form-control" id="regEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="regPassword" class="form-label">{{ __('site.password') }}:</label>
-                        <input type="password" class="form-control" id="regPassword" required>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.close') }}</button>
-                <button type="button" class="btn btn-primary">{{ __('site.register') }}</button>
-            </div>
-        </div>
-    </div>
-</div> --}}

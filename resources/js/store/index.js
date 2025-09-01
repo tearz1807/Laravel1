@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import axios from 'axios';
 
 export default createStore({
   state: {
@@ -13,9 +14,6 @@ export default createStore({
     user: null,
   },
   mutations: {
-    SET_TEST(state, payload) {
-      state.test = payload
-    },
     SET_TRANSLATIONS(state, translations) {
       state.translations = translations;
     },
@@ -34,14 +32,17 @@ export default createStore({
         })
         .catch(console.error);
     },
-    async checkAuth({ commit }) {
-      try {
-        const response = await axios.get('/api/user');
-        commit('SET_USER', response.data);
-      } catch (error) {
-        commit('SET_USER', null);
+    checkAuth({ commit }) {
+      return axios.get('/api/user')
+        .then(response => {
+          console.log('Auth check success:', response.data);
+          commit('SET_USER', response.data.user);
+        })
+        .catch(error => {
+          console.log('Auth check failed:', error.response?.status);
+          commit('SET_USER', null);
+        });
       }
-    },
   },
   getters: {
     t(state) {
@@ -52,6 +53,6 @@ export default createStore({
       }
     },
     getModal: (state) => (id) => state.regModal[id] || null,
-    isAuthenticated: state => !!state.user,
+    isAuthenticated: (state) => !!state.user,
   }
 })
