@@ -1,0 +1,17 @@
+.custom-btn {
+    background-color: $white;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+    border-radius: 30px;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+
+    &:hover {
+        color: $white !important;
+        border: 2px solid $white;
+        background-color: transparent;
+    }
+}
+
+.btn {
+    font-size: 18px;
+}

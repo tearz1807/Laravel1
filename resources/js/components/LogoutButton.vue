@@ -3,13 +3,9 @@
     v-if="$store.state.user"
     @click="handleLogout"
     :disabled="isLoading"
-    class="btn custom-btn"
-    style="background-color: white;">
+    class="btn custom-btn me-2 fw-bold text-primary">
     <span v-if="!isLoading">{{ $lang().navbar?.logout || 'Log Out' }}</span>
-    <span v-else class="d-flex align-items-center">
-      <span class="spinner-border spinner-border-sm me-2"></span>
-      Logging out...
-    </span>
+    <span v-else class="d-flex align-items-center"></span>
   </button>
 </template>
 
