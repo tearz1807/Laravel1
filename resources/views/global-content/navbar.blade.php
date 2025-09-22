@@ -38,6 +38,24 @@
                         </li>
                     </ul>
                 </div>
+                <div class="dropdown me-3" v-if="$store.state.user?.is_admin">
+                    <button class="btn btn-link text-white dropdown-toggle" 
+                            type="button" 
+                            id="settingsDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        <i class="bi bi-gear-fill fs-5"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingsDropdown">
+                        <li><h6 class="dropdown-header">Администратор</h6></li>
+                        
+                        <li class="dropdown-item">
+                            <a href="{{ route('admin.settings.index') }}" class="text-decoration-none small">
+                                <i class="bi bi-sliders me-2"></i>Управление настройками
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                 
                 <template v-if="!$store.state.user">
                     <button class="btn btn-custom me-2 fw-bold text-primary"
@@ -56,6 +74,7 @@
         </div>
     </div>
 </nav>
+
 <div class="modal fade" id="navbarModal" tabindex="-1" aria-labelledby="navbarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen bg-primary">
         <div class="modal-content bg-primary h-100">

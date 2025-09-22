@@ -23,6 +23,9 @@ export default createStore({
     SET_USER(state, user) {
       state.user = user;
     },
+    SET_SETTINGS(state, settings) {
+      state.settings = settings;
+    }
   },
   actions: {
     loadTranslate({ commit }) {
@@ -35,14 +38,15 @@ export default createStore({
     checkAuth({ commit }) {
       return axios.get('/api/user')
         .then(response => {
-          console.log('Auth check success:', response.data);
-          commit('SET_USER', response.data.user);
+          const userData = response.data.data || response.data;
+          commit('SET_USER', userData);
+          return userData;
         })
         .catch(error => {
-          console.log('Auth check failed:', error.response?.status);
           commit('SET_USER', null);
+          throw error;
         });
-      }
+    }
   },
   getters: {
     t(state) {

@@ -29,9 +29,7 @@ Route::get('/language/{locale}', function ($locale) {
 
 Route::get('/translate', [App\Http\Controllers\Translete::class, 'translate'])->name('translate');
 
-
 use App\Http\Controllers\TestController;
-
 use App\Http\Controllers\MagicController;
 
 Route::get('/magic-demo', [MagicController::class, 'demo']);
@@ -43,7 +41,6 @@ Route::get('/test', function(){
     $test0 =  new MagicController();
     echo $test0->wfsdfdsf('0sdfsdf0');
 
-
     $test = new TestController(1000);
 })->name('translate');
 
@@ -52,6 +49,35 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::middleware('auth')->get('/api/user', [AuthController::class, 'getAuthenticatedUser']);
 
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\SettingController;
+
+Route::get('/api/settings', [SettingController::class, 'index']);
+Route::get('/api/settings/{module}', [SettingController::class, 'byModule']);
+Route::put('/api/settings/{name}', [SettingController::class, 'update'])
+    ->middleware([AdminMiddleware::class]);
+
+Route::middleware([AdminMiddleware::class])->prefix('admin')->group(function () {
+    Route::get('/settings', function() {
+        return view('admin.vue', ['component' => 'admin-settings-list']);
+    })->name('admin.settings.index');
+    
+    Route::get('/settings/create', function() {
+        return view('admin.vue', ['component' => 'admin-settings-create']);
+    })->name('admin.settings.create');
+    
+    Route::get('/settings/{id}/edit', function($id) {
+        return view('admin.vue', ['component' => 'admin-settings-edit', 'id' => $id]);
+    })->name('admin.settings.edit');
+    
+    Route::prefix('api')->group(function () {
+        Route::get('/settings', [\App\Http\Controllers\Admin\SettingController::class, 'index']);
+        Route::post('/settings', [\App\Http\Controllers\Admin\SettingController::class, 'store']);
+        Route::get('/settings/{setting}', [\App\Http\Controllers\Admin\SettingController::class, 'show']);
+        Route::put('/settings/{setting}', [\App\Http\Controllers\Admin\SettingController::class, 'update']);
+        Route::delete('/settings/{setting}', [\App\Http\Controllers\Admin\SettingController::class, 'destroy']);
+    });
+});
 
 use App\Http\Controllers\Patterns\Creational\MazeController;
 use App\Http\Controllers\Patterns\Creational\MazeBuilderController;

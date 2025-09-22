@@ -97,13 +97,17 @@ export default {
         this.closeModal();
       }
     }
+
+
+
+    
   },
   methods: {
     handleSubmit() {
       this.isLoading = true;
       this.error = null;
       
-      this.axiosInstance.get({
+      this.axiosInstance.execute({
         data: this.data,
         beforEr: (error) => {
           return error.errors || error.error || error.message || 'Registration failed';
