@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreSettingRequest;
 
 class SettingController extends Controller
 {
@@ -19,27 +20,15 @@ class SettingController extends Controller
         return response()->json($setting);
     }
 
-    public function store(Request $request)
+    public function store(StoreSettingRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|unique:settings,name',
-            'value' => 'required',
-            'module' => 'required',
-            'title' => 'required',
-            'permission_level' => 'required|in:user,admin'
-        ]);
-
-        $setting = Setting::create($validated);
+        $setting = Setting::create($request->validated());
         return response()->json($setting, 201);
     }
 
     public function update(Request $request, Setting $setting)
     {
-        $validated = $request->validate([
-            'value' => 'required'
-        ]);
-
-        $setting->update($validated);
+        $setting->update($request->validate(['value' => 'required']));
         return response()->json($setting);
     }
 

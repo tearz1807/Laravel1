@@ -65,28 +65,6 @@ export default {
     myCollback() {
       this.collback('click on modal');
     },
-     async loadSettings() {
-        try {
-            const response = await axios.get('/api/settings');
-            this.settings = response.data;
-            
-            if (this.$store && this.$store.commit) {
-                this.$store.commit('SET_SETTINGS', this.settings);
-            }
-            
-        } catch (error) {
-            console.error('Ошибка загрузки настроек:', error);
-        }
-    },
-    
-    async updateSetting(name, value) {
-        try {
-            await axios.put(`/api/settings/${name}`, { value });
-            console.log('Настройка обновлена:', name, value);
-        } catch (error) {
-            console.error('Ошибка обновления настройки:', error);
-        }
-    }
   },
   mounted() {
     this.initModal();
@@ -94,7 +72,6 @@ export default {
       id: this.modalId,
       instance: this
     });
-    this.loadSettings();
   }
 };
 </script>

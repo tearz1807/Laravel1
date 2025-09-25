@@ -8,16 +8,17 @@
 </head>
 <body>
     <div id="vue-admin">
-        <admin-wrapper></admin-wrapper>
+        @if($component == 'admin-settings-list')
+            <admin-settings-list></admin-settings-list>
+        @elseif($component == 'admin-settings-edit')
+            <admin-settings-edit></admin-settings-edit>
+        @elseif($component == 'admin-settings-create')
+            <admin-settings-create></admin-settings-create>
+        @else
+            <admin-settings-list></admin-settings-list>
+        @endif
     </div>
 
     @vite(['resources/js/app.js'])
-    
-    <script>
-        window.Laravel = {
-            component: '{{ $component }}',
-            settingId: '{{ $id ?? null }}'
-        };
-    </script>
 </body>
 </html>

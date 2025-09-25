@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 $white: #ffffff;
 $secondary-color: #555;
@@ -18,3 +19,4 @@ $primary-color: #007bff;
 @import "reminds/statistic.scss";
 @import "spinner.scss";
 @import "logout.scss"
+

@@ -10,7 +10,7 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check() || !Auth::user()->is_admin) {
+        if ($request->is('admin/api/*') && (!Auth::check() || !Auth::user()->is_admin)) {
             return response()->json(['error' => 'Требуются права администратора'], 403);
         }
 

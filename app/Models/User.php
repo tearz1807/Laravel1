@@ -49,15 +49,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function scopeNewUser($query, $data){
-        return $query->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'is_admin' => $data['is_admin'] ?? false,
-        ]);
-    }
-
     public function getAuthResponse(): array{
         return [
             'id' => $this->id,

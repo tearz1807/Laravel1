@@ -1,10 +1,7 @@
 <template>
   <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1>
-        <i class="bi bi-sliders"></i>
-        Управление настройками
-      </h1>
+      <h1><i class="bi bi-sliders"></i> Управление настройками</h1>
       <div>
         <a href="/" class="btn btn-outline-primary me-2">
           <i class="bi bi-house"></i> На сайт
@@ -18,9 +15,7 @@
       </div>
     </div>
 
-    <div v-if="successMessage" class="alert alert-success">
-      {{ successMessage }}
-    </div>
+    <div v-if="successMessage" class="alert alert-success">{{ successMessage }}</div>
 
     <div class="mb-3">
       <button @click="goToCreate" class="btn btn-primary">
@@ -79,17 +74,16 @@ export default {
   },
   methods: {
     async loadSettings() {
-        this.loading = true
-        try {
-            const token = localStorage.getItem('auth_token');
-            const response = await axios.get('/admin/api/settings')
-            this.settings = response.data
-        } catch (error) {
-            console.error('Ошибка загрузки:', error)
-            alert('Ошибка загрузки настроек')
-        } finally {
-            this.loading = false
-        }
+      this.loading = true
+      try {
+        const response = await axios.get('/admin/api/settings')
+        this.settings = response.data
+      } catch (error) {
+        console.error('Ошибка загрузки:', error)
+        alert('Ошибка загрузки настроек')
+      } finally {
+        this.loading = false
+      }
     },
     goToCreate() {
       window.location.href = '/admin/settings/create'
@@ -100,7 +94,7 @@ export default {
     async deleteSetting(setting) {
       if (confirm(`Удалить настройку "${setting.title}"?`)) {
         try {
-          await axios.delete(`/api/admin/settings/${setting.id}`)
+          await axios.delete(`/admin/api/settings/${setting.id}`)
           await this.loadSettings()
           alert('Настройка удалена успешно!')
         } catch (error) {
